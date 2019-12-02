@@ -32,12 +32,12 @@ class Owner
     Dog.all.select{|dog| dog.owner == self}
   end
   
-  def buy_cat
-    Cat.new = self.name
+  def buy_cat(name)
+    Cat.new(name, self)
   end
   
-  def buy_dog
-    
+  def buy_dog(name)
+    Dog.new(name, self)
   end
   
   def walk_dogs
@@ -49,12 +49,13 @@ class Owner
   end
   
   def sell_pets(pets)
-    self.each do |pets|
-      if pet.owner == "nervous"
-        
+    self.each do |pet|
+       pet.mood = "nervous"
+        pet.owner = nil 
+    end 
   end
   
-  
-  
-  
+  def list_pets
+    "I have #{self.dogs.count} dog(s), and #{self.cats.count} cat(s)."
+  end
 end
